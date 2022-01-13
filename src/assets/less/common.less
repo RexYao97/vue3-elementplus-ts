@@ -1,0 +1,956 @@
+// @import 'transitions';
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: @fColor;
+}
+pre {
+  word-break: break-word;
+  white-space: pre-line;
+  font-size:14px;
+  line-height: 18px;
+}
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  color: #20a0ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+a:-webkit-any-link {
+  white-space: nowrap;
+}
+
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear {
+  zoom: 1;
+}
+
+.sf-dialog {
+  min-width: 360px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.sf-tabs {
+  width: 100%;
+  height: 100%;
+}
+
+.data-list {
+  margin-top: 15px;
+}
+
+.sf-tabs--card > .sf-tabs__header .sf-tabs__item.is-active {
+  border-bottom: solid 1px #fff !important;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.main-menu {
+  background-color: @banner;
+  padding-left: 2px;
+  overflow: hidden;
+  height: calc(~'100% - 0px');
+  box-sizing: border-box;
+}
+
+.sf-main {
+  background: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sf-main .sf-tabs__header {
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 2s;
+  margin: 0;
+  // box-shadow: 0 2px 4px rgba(209, 219, 229, 0.5);
+}
+
+.panel-wrapper {
+  position: absolute !important;
+  top: 50px;
+  bottom: 0;
+  width: 100%;
+  min-width: 1000px;
+}
+
+.is-micro-wrapper .panel-wrapper {
+  top: 0;
+}
+
+.is-micro-wrapper {
+  // 修复脑图位置问题
+  #minder {
+    margin-top: 0px;
+    .lt {
+      top: 250px;
+      left: 250px;
+    }
+  }
+}
+
+.panel-top {
+  height: 45px;
+  line-height: 45px;
+  background: #324057;
+  color: #c0ccda;
+}
+
+.panel-center {
+  // background: #324057;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.panel-container {
+  background: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 215px;
+}
+
+.panel-top .list {
+  float: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.panel-top .list i {
+  font-weight: 700;
+}
+
+.outer-tabs.sf-tabs--card > .sf-tabs__header .sf-tabs__item.is-active {
+  border-bottom: solid 1px #fff !important;
+  z-index: 10;
+  background-color: #f1f2f7;
+}
+
+.sf-submenu__icon-arrow {
+  padding: 3px 0 0;
+}
+
+.outer-tabs > .sf-tabs__header {
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 2s;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(209, 219, 229, 0.5);
+}
+
+.sf-tabs__item.is-closable {
+  display: inline-block;
+  float: none;
+}
+
+.sf-tabs__header .sf-tabs__item:first-child .sf-icon-close {
+  display: none;
+}
+
+.grid-content {
+  position: relative;
+  height: 100%;
+}
+
+.sf-tabs__nav-wrap.is-scrollable {
+  padding: 0 25px;
+}
+
+.sf-tabs__nav-next,
+.sf-tabs__nav-prev {
+  width: 25px;
+  text-align: center;
+  background-color: #e5e9f2;
+}
+
+.sf-tab-pane {
+  height: 100%;
+}
+
+.iframe-view {
+  height: 100%;
+}
+
+.menu-expand {
+  position: fixed;
+  bottom: 0;
+  width: 215px;
+  margin: 0;
+  height: 40px;
+  line-height: 40px !important;
+  color: #c0ccda;
+  text-align: center;
+  cursor: pointer;
+  border-top: 1px solid #475669;
+  border-bottom: 1px solid #475669;
+  background-color: #324057;
+}
+
+.mini-menu {
+  .panel-container {
+    left: 64px;
+  }
+
+  .menu-expand {
+    width: 64px;
+    transform: rotate(180deg);
+  }
+}
+
+input,
+textarea,
+keygen,
+select,
+button {
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+}
+
+// 分页码
+.sf-pagination {
+  margin-top: 20px;
+}
+
+.userList .move-wrap {
+  display: table-cell;
+  min-height: 300px;
+}
+
+.userList .moveRight,
+.userList .moveLeft {
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 10px;
+}
+
+// 配置列表
+.darg-cell {
+  .set-cell {
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #dfe6ec;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    span.label {
+      display: inline-block;
+      width: 200px;
+    }
+  }
+}
+
+//点选验证码
+.sf-code-warp {
+  width: 240px;
+  position: relative;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.sf-code-control {
+  position: relative;
+  border: 1px solid #e4e7eb;
+  background-color: #f7f9fa;
+  text-align: center;
+}
+
+.sf-code-control span {
+  color: #45494c;
+  line-height: 40px;
+}
+
+.sf-code-panel {
+  position: absolute;
+  left: 0;
+  width: 240px;
+  z-index: 999;
+  bottom: 40px;
+  padding-bottom: 10px;
+  opacity: 0;
+  transition: all 0.2s linear;
+  height: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.sf-panel-placeholder {
+  position: relative;
+  padding-top: 50%;
+}
+
+.sf-bgimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #dcdfe6;
+}
+
+.sf-bgimg .sf-bg-img {
+  vertical-align: top;
+  width: 100%;
+}
+
+.sf-refresh {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background-image: url(/console/tcmp/static/img/icon_light.png);
+  background-position: 0 -437px;
+  background-size: 34px 471px;
+}
+
+.sf-bgimg-show {
+  opacity: 1;
+  height: 120px;
+  overflow: visible;
+}
+
+.point-group {
+  background-image: url(/console/tcmp/static/img/icon_light.png);
+  position: absolute;
+  width: 26px;
+  height: 33px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+.point-group-0 {
+  background-position: 0 -364px;
+}
+
+.point-group-1 {
+  background-position: 0 -220px;
+}
+
+.point-group-2 {
+  background-position: 0 -328px;
+}
+
+.point-group-3 {
+  background-position: 0 -292px;
+}
+
+.point-group-4 {
+  background-position: 0 -256px;
+}
+
+.sf-code-loadbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #f7f9fa;
+}
+
+.sf-code-loadbox-inner {
+  position: relative;
+  top: 50%;
+  margin-top: -25px;
+}
+
+.sf-code-loadicon {
+  display: inline-block;
+  background: url(/console/tcmp/static/img/icon_light.png) 0 -185px no-repeat;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  -webkit-animation: loading 0.8s linear infinite;
+  animation: loading 0.8s linear infinite;
+}
+
+.sf-code-loadtext {
+  display: block;
+  line-height: 20px;
+  color: #45494c;
+}
+
+.sf-code-success .sf-tips-icon {
+  margin-right: 5px;
+  width: 17px;
+  height: 12px;
+  vertical-align: middle;
+  background: url(/console/tcmp/static/img/icon_light.png) no-repeat;
+  background-position: 0 -67px;
+  background-size: 34px 471px;
+}
+
+.sf-code-fail .sf-tips-icon {
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  background: url(/console/tcmp/static/img/icon_light.png) no-repeat;
+  background-position: 0 -97px;
+  background-size: 34px 471px;
+}
+
+.sf-code-success .sf-tips-icon,
+.sf-code-fail .sf-tips-icon {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+.sf-code-fail .sf-code-control,
+.sf-code-fail .sf-code-control span {
+  border-color: #f57a7a;
+  background-color: #fce1e1;
+  color: #f57a7a;
+}
+
+.sf-code-success .sf-code-control,
+.sf-code-success .sf-code-control span {
+  color: #52ccba;
+  border-color: #52ccba;
+  background-color: #d2f4ef;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
+
+// /*滚动条样式*/
+// ::-webkit-scrollbar {
+//   width: 7px;
+//   height: 7px;
+// }
+
+// ::-webkit-scrollbar-button {
+//   /* 2 */
+// }
+
+// ::-webkit-scrollbar-track {
+//   background-color: rgba(0, 0, 0, 0);
+// }
+
+// ::-webkit-scrollbar-track-piece {
+//   /* 4 */
+//   width: 6px;
+// }
+
+// /*定义滑块 内阴影+圆角*/
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   width: 3px;
+//   background-color: #474c4b;
+//   //background-color:red;
+// }
+
+// ::-webkit-scrollbar-corner {
+//   /* 6 */
+//   width: 6px;
+// }
+
+// ::-webkit-resizer {
+//   /* 7 */
+//   width: 6px;
+// }
+
+//flex兼容性
+/* 父元素-flex容器 */
+.flex {
+  // display: box;
+  /* OLD - Android 4.4- */
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.inline_flex {
+  display: -webkit-inline-flex;
+  /* NEW - Chrome */
+  display: inline-flex;
+}
+
+/* 子元素-平均分栏 */
+.flex2 {
+  -webkit-box-flex: 2;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 2;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 2;
+  /* Chrome */
+  -ms-flex: 2;
+  /* IE 10 */
+  flex: 2;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+/* 子元素-平均分栏 */
+.flex5 {
+  -webkit-box-flex: 5;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 5;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 5;
+  /* Chrome */
+  -ms-flex: 5;
+  /* IE 10 */
+  flex: 5;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+/* 子元素-平均分栏 */
+.flex1 {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  -ms-flex: 1;
+  /* IE 10 */
+  flex: 1;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+/* 父元素-横向排列（主轴） */
+.flex-h {
+  // display: box;
+  /* OLD - Android 4.4- */
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  /* 09版 */
+  -webkit-box-orient: horizontal;
+  /* 12版 */
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+
+/* 父元素-横向换行 */
+.flex-hw {
+  /* 09版 */
+  /*-webkit-box-lines: multiple;*/
+  /* 12版 */
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex_btween {
+  -webkit-box-pack: space-between;
+  /* 12版 */
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* 父元素-水平居中（主轴是横向才生效） */
+.flex-hc {
+  /* 09版 */
+  -webkit-box-pack: center;
+  /* 12版 */
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  /* 其它取值如下：
+    align-items     主轴原点方向对齐
+    flex-end        主轴延伸方向对齐
+    space-between   等间距排列，首尾不留白
+    space-around    等间距排列，首尾留白
+   */
+}
+
+.flex-hl {
+  -webkit-box-pack: start;
+  -moz-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.flex-hsp {
+  /* 09版 */
+  -webkit-box-pack: space-around;
+  /* 12版 */
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.flex-hr {
+  /* 09版 */
+  -webkit-box-pack: flex-end;
+  /* 12版 */
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+/* 父元素-纵向排列（主轴） */
+.flex-v {
+  /* 09版 */
+  -webkit-box-orient: vertical;
+  /* 12版 */
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+
+/* 父元素-纵向换行 */
+.flex-vw {
+  /* 09版 */
+  /*-webkit-box-lines: multiple;*/
+  /* 12版 */
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* 父元素-竖直居中（主轴是横向才生效） */
+.flex-vc {
+  /* 09版 */
+  -webkit-box-align: center;
+  /* 12版 */
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+
+/** flex 布局 开始**/
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-center {
+  justify-content: center;
+}
+/** 空隙 **/
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-space-around {
+  justify-content: space-around;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-auto {
+  flex: 1;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+.items-stretch {
+  align-items: stretch;
+}
+/** flex 布局 结束**/
+
+// 头部面包屑
+.top-breadcrumb {
+  line-height: 50px;
+  height: 50px;
+  background: #fff;
+
+  // box-shadow: 5px 5px 5px #ddd;
+  border-radius: 2px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  strong {
+    color: #535455;
+    font-size: 16px;
+    line-height: 50px;
+    font-weight: normal;
+  }
+  button {
+    font-size: 16px;
+    margin-left: 0 !important;
+    line-height: 50px;
+  }
+  b {
+    font-weight: normal;
+    margin: 0 8px;
+    line-height: 50px;
+  }
+  span {
+    line-height: 50px;
+  }
+}
+
+// 卡片box-shadow
+.card-box-shadow {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+// 顺丰云Table样式，选中项
+.sf-cloud-table {
+  .sf-radio__input.is-checked .sf-radio__inner {
+    border-color: #d80c24;
+    background: #d80c24;
+  }
+  .sf-radio__inner:hover {
+    border-color: #d80c24;
+  }
+}
+
+// 给链接，按钮，Input去除outline样式
+a,
+input,
+button,
+select,
+div,
+span {
+  outline: none;
+}
+
+// 表格内部数据tooltip信息
+.is-table-tooltip-light {
+  word-wrap: break-word;
+  background: #fff !important;
+  // max-width: 200px;
+  padding: 4px 16px;
+  color: #666 !important;
+  line-height: 22px;
+  font-size: 14px;
+  border: 1px solid #e4e7ed;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+// 间距样式
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+// 全局统一关闭input, textarea拖动功能
+input,
+textarea {
+  resize: none !important;
+}
+
+// 穿梭框上云样式
+.sf-cloud-transfer {
+  // checkbox red backgroud 适用于table
+  .sf-checkbox__inner {
+    border-color: #d7d7d7;
+    border-radius: 2px;
+  }
+
+  .sf-checkbox__input.is-focus .sf-checkbox__inner {
+    border-color: #d7d7d7;
+  }
+
+  .sf-checkbox__input.is-checked .sf-checkbox__inner,
+  .sf-checkbox__input.is-indeterminate .sf-checkbox__inner {
+    background-color: #ffffff;
+    border-color: #d80c24;
+  }
+
+  .sf-checkbox__input.is-checked + .sf-checkbox__label {
+    color: #666666;
+  }
+
+  .sf-checkbox__inner:hover,
+  .sf-checkbox__input.is-focus .sf-checkbox__inner:hover {
+    border-color: #d80c24;
+  }
+
+  .sf-checkbox__inner::after {
+    border-color: #d80c24;
+  }
+
+  .sf-checkbox__input.is-disabled .sf-checkbox__inner {
+    background-color: #edf2fc;
+    border-color: #dcdfe6;
+  }
+
+  .sf-checkbox__input.is-disabled + span.sf-checkbox__label {
+    color: #c0c4cc;
+  }
+
+  .sf-checkbox__label {
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .sf-checkbox__input.is-indeterminate .sf-checkbox__inner::before {
+    background-color: #d80c24;
+  }
+
+  .sf-checkbox__input.is-disabled .sf-checkbox__inner::after {
+    border-color: #c0c4cc;
+  }
+
+  .sf-transfer__button {
+    background: #d80c24;
+    color: #fff;
+    border-color: #d80c24 !important;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: #f2242e;
+      border-color: #f2242e !important;
+    }
+
+    &.is-disabled,
+    &.is-disabled:focus,
+    &.is-disabled:hover {
+      color: #fff;
+      border: 1px solid #d7d7d7 !important;
+      background-color: #d7d7d7;
+    }
+  }
+}
+
+// 普通链接样式，防止接入到微前端后，样式被外部全局样式影响
+a.normal-link {
+  color: #20a0ff;
+}
+
+// 代码编辑器的 错误提示
+.sf-form-item.is-error .ace_editor,
+.sf-form-item.is-error .tox-tinymce {
+  border: 1px solid #f56c6c;
+}
+
+
+.sf-message-box__wrapper {
+  .notice-wrapper {
+    width: 800px;
+    p{
+      margin-bottom: 5px;
+      font-size: 14px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+  .sf-button--primary {
+    background: #d80c24;
+    color: #fff;
+    border-color: #d80c24 !important;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: #f2242e;
+      border-color: #f2242e !important;
+    }
+
+  }
+}
