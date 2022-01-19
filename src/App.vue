@@ -7,7 +7,7 @@ import en from 'element-plus/lib/locale/lang/en';
 import menuConfig from './views/menuConfig.vue';
 import IntersectionObserver from './views/IntersectionObserver.vue'
 
-// const menuConfig = () => import('./views/menuConfig.vue')
+
 type LocalKeyType = 'zh' | 'en';
 
 const { locale } = useI18n();
@@ -20,25 +20,20 @@ const languages = {
 const localeComputed = computed(() => {
   return languages[locale.value as LocalKeyType];
 });
-// 展示
-let show = ref<number>(1);
-function changeShowValue(val:number){
-  show.value = val;
-  // if()
-}
+
   // console.log(Trigger())
 </script>
 
 <template>
   <el-config-provider :locale="localeComputed">
-    <div class='header-menu'>
+     <!--  <div class='header-menu'>
       <el-button @click='changeShowValue(0)'>示例demo</el-button>
       <el-button @click='changeShowValue(1)'>IntersectionObserver</el-button>
-    </div>
+    </div> -->
     <!-- <RouterView></RouterView> -->
     <!-- <div style="height:700px;overflow:auto;"> -->
-    <menuConfig v-if='show===0'/>
-    <IntersectionObserver v-if='show===1'/>
+    <menuConfig />
+        <!-- <IntersectionObserver v-if='show===1'/> -->
   </el-config-provider>
 </template>
 

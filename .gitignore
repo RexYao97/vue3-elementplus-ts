@@ -5,3 +5,4 @@ dist-ssr
 *.local
 package-lock.json
 .vscode/extensions.json
+yarn.lock

@@ -4,9 +4,9 @@
 
 <template>
   <div class="container" tg-name="blur" tg-from="100" tg-to="0" tg-edge="inset">
-    <div class="container" tg-name="opacity" tg-from="0" tg-to="1">
+    <div class="container" tg-name="opacity" tg-from="0" tg-to="100">
       <div class="sticky">
-        <span>Hello.</span>
+        <span>Hello.1</span>
       </div>
     </div>
   </div>
