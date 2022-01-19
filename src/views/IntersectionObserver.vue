@@ -1,0 +1,93 @@
+<script setup lang="ts">
+import { onMounted } from 'vue';
+const numSteps = 20.0;
+
+let boxElement: Element;
+let prevRatio = 0.0;
+let increasingColor = 'rgba(40, 40, 190, ratio)';
+let decreasingColor = 'rgba(190, 40, 40, ratio)';
+
+let options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0,
+};
+
+
+const handleIntersect: IntersectionObserverCallback = function (entries) {
+  console.log('IntersectionObserverCallback',new Date().getTime())
+  entries.forEach((entry) => {
+    // console.log(entry);
+    prevRatio = entry.intersectionRatio;
+  });
+};
+window.addEventListener('scroll',()=>{
+  console.log('scroll',new Date().getTime())
+})
+onMounted(() => {
+  boxElement = document.querySelector('#box') || document.createElement('div')
+  boxElement.innerHTML
+  createObserver();
+
+});
+function createObserver() {
+  let observer;
+
+  let options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: buildThresholdList(),
+  };
+
+  observer = new IntersectionObserver(handleIntersect, options);
+  observer.observe(boxElement);
+}
+function buildThresholdList() {
+  let thresholds = [];
+  let numSteps = 20;
+
+  for (let i = 1.0; i <= numSteps; i++) {
+    let ratio = i / numSteps;
+    thresholds.push(ratio);
+  }
+
+  thresholds.push(0);
+  return thresholds;
+}
+</script>
+
+<template>
+<div id="box">
+  <div class="vertical">
+    Welcome to <strong>The Box!</strong>
+  </div>
+</div>
+</template>
+<style scoped>
+
+#box {
+  background-color: rgba(40, 40, 190, 255);
+  border: 4px solid rgb(20, 20, 120);
+  transition: background-color 1s, border 1s;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.vertical {
+  color: white;
+  font: 32px 'Arial';
+}
+
+.extra {
+  width: 350px;
+  height: 350px;
+  margin-top: 10px;
+  border: 4px solid rgb(20, 20, 120);
+  text-align: center;
+  padding: 20px;
+}
+</style>
