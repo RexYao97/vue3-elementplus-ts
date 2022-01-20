@@ -59,6 +59,5 @@ const localeComputed = computed(() => {
   right: 0;
   min-width: 1200px;
   min-height: 800px;
-  padding-top: 2000px;
 }
 </style>

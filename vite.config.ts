@@ -18,7 +18,8 @@ export default defineConfig(({ mode }: ConfigEnv) => {
     plugins: [
       vue(),
       legacy({
-        targets: ['ie >= 11'],
+        targets: ['ie >= 11','Chrome 65'],
+        modernPolyfills: true,
         additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
       }),
     ],

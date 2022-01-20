@@ -1,40 +1,42 @@
 <script setup lang="ts">
-
+import firstHeader from './appleComs/firstList.vue';
+import secondHeader from './appleComs/secondHeader.vue';
+import thirdHeader from './appleComs/thirdHeader.vue';
 </script>
 
 <template>
-  <div class="container" tg-name="blur" tg-from="100" tg-to="0" tg-edge="inset">
-    <div class="container" tg-name="opacity" tg-from="0" tg-to="100">
-      <div class="sticky">
-        <span>Hello.1</span>
-      </div>
-    </div>
+  <div class="scrool-view">
+    <firstHeader />
+    <secondHeader />
+    <thirdHeader />
   </div>
 </template>
-<style scoped>
+<style scoped lang="less">
+@font-face {
+  font-family: 'SF Pro SC';
+  	font-style:normal;
+	font-weight:300;
+  src: url('public/font/PingFangSC-Semibold.woff2');
+  
+}
 body {
   padding: 0;
   margin: 0;
 }
 
-.container {
-  height: 200vh;
+.scrool-view {
+  height: 2000px;
+  background: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* 变量声明 */
+   --device-start-height: 750px;
+  --lt-container-overlap: -100vh;
+  --lt-sticky-top: 0;
+  --lt-container-min-height: calc(var(--lt-content-min-height) * 2);
+  --lt-content-min-height: calc(var(--lt-container-overlap) * -1);
+
 }
 
-.sticky {
-  font-size: 10rem;
-  font-weight: bold;
-  letter-spacing: -0.03em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
-  filter: blur(calc(var(--blur) * 1px));
-}
-
-span {
-  opacity: var(--opacity);
-}
 </style>
