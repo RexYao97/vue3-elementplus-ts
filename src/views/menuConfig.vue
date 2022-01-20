@@ -9,6 +9,7 @@ import thirdHeader from './appleComs/thirdHeader.vue';
     <firstHeader />
     <secondHeader />
     <thirdHeader />
+  
   </div>
 </template>
 <style scoped lang="less">
